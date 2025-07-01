@@ -1,12 +1,32 @@
-# React + Vite
+# 🎉 Event Management App - Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **React.js frontend** for the MERN stack **Event Management Web Application**. It includes authentication, event listing, searching, filtering, and full CRUD functionality using a user-friendly UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔐 Custom Authentication (Register/Login)
+- 📅 Add, View, Edit, Delete Events
+- 🔍 Search & Filter Events
+- ✅ Join Event Button (Only once per user)
+- 🧑‍💼 User-specific Events ("My Events" page)
+- 📸 Dynamic Navbar with user profile photo
+- 🔐 Private Routes for Authenticated Pages
+- 🎨 Responsive and Modern UI
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠 Technologies Used
+
+- **React.js** – Frontend library
+- **React Router DOM** – For routing
+- **Redux RTK ** – For State Management
+- **Axios** – HTTP requests
+- **Tailwind CSS** – Styling
+- **JWT** – For token handling (manual storage & validation)
+
+---
+
+## 📂 Folder Structure
+
