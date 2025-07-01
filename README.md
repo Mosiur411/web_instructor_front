@@ -21,6 +21,7 @@ This is the **React.js frontend** for the MERN stack **Event Management Web Appl
 
 - **React.js** – Frontend library
 - **React Router DOM** – For routing
+- **Redux RTK ** – For State Management
 - **Axios** – HTTP requests
 - **Tailwind CSS** – Styling
 - **JWT** – For token handling (manual storage & validation)
