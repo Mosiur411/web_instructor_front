@@ -5,7 +5,6 @@ import Login from "./pages/login";
 import Register from "./pages/register";
 import { useAuthCheck } from "./hooks/useAuthCheck";
 import Profle from "./pages/user";
-import AddEvent from "./pages/event/AddEvent";
 import AllEvent from "./pages/event/AllEvent";
 import MyEvent from "./pages/event/MyEvent";
 
@@ -22,7 +21,6 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/profile" element={<Profle/>} />
-          <Route path="/events/add" element={<AddEvent/>}/>
           <Route path="/events" element={<AllEvent/>}/>
           <Route path="/events/mine" element={<MyEvent/>}/>
         </Routes>
