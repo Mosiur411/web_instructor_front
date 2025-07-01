@@ -60,7 +60,7 @@ export default function EventList() {
   };
 
   const filteredEvents = useMemo(() => {
-    if (!events.length) return [];
+    if (!events?.length) return [];
 
     const today = new Date();
     const todayStart = new Date(
@@ -243,77 +243,77 @@ export default function EventList() {
       </div>
 
       {/* Event Cards */}
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto pt-20 px-4">
-  {filteredEvents.length === 0 ? (
-    <p className="text-center col-span-full text-gray-600">
-      No events found.
-    </p>
-  ) : (
-    filteredEvents.map((event) => (
-      <div
-        key={event._id}
-        className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col justify-between hover:shadow-2xl transition duration-300"
-      >
-        {/* Top Content */}
-        <div>
-          {/* Title */}
-          <h2 className="text-xl font-bold text-blue-700 mb-3 tracking-wide">
-            {event.eventTitle}
-          </h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-7xl mx-auto pt-20 px-4">
+        {filteredEvents?.length === 0 ? (
+          <p className="text-center col-span-full text-gray-600">
+            No events found.
+          </p>
+        ) : (
+          filteredEvents.map((event) => (
+            <div
+              key={event._id}
+              className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6 flex flex-col justify-between hover:shadow-2xl transition duration-300"
+            >
+              {/* Top Content */}
+              <div>
+                {/* Title */}
+                <h2 className="text-xl font-bold text-blue-700 mb-3 tracking-wide">
+                  {event.eventTitle}
+                </h2>
 
-          {/* Poster */}
-          <div className="text-sm text-gray-500 flex items-center gap-2 mb-1">
-            <FaUser className="text-gray-400" />
-            <span className="text-gray-700 font-medium">
-              {event.posterName}
-            </span>
-          </div>
+                {/* Poster */}
+                <div className="text-sm text-gray-500 flex items-center gap-2 mb-1">
+                  <FaUser className="text-gray-400" />
+                  <span className="text-gray-700 font-medium">
+                    {event.posterName}
+                  </span>
+                </div>
 
-          {/* Date & Time */}
-          <div className="text-sm text-gray-500 flex items-center gap-2 mb-1">
-            <FaCalendarAlt className="text-gray-400" />
-            <span className="text-gray-700">
-              {new Date(event.date).toLocaleDateString(undefined, {
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              })}{" "}
-              at {event.time}
-            </span>
-          </div>
+                {/* Date & Time */}
+                <div className="text-sm text-gray-500 flex items-center gap-2 mb-1">
+                  <FaCalendarAlt className="text-gray-400" />
+                  <span className="text-gray-700">
+                    {new Date(event.date).toLocaleDateString(undefined, {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    })}{" "}
+                    at {event.time}
+                  </span>
+                </div>
 
-          {/* Location */}
-          <div className="text-sm text-gray-500 flex items-center gap-2 mb-3">
-            <FaMapMarkerAlt className="text-red-400" />
-            <span className="text-gray-700">{event.location}</span>
-          </div>
+                {/* Location */}
+                <div className="text-sm text-gray-500 flex items-center gap-2 mb-3">
+                  <FaMapMarkerAlt className="text-red-400" />
+                  <span className="text-gray-700">{event.location}</span>
+                </div>
 
-          {/* Description */}
-          <div className="text-sm text-gray-600 flex gap-2 mb-4 line-clamp-3">
-            <FaAlignLeft className="text-gray-400 mt-1" />
-            <p>{event.description}</p>
-          </div>
-        </div>
+                {/* Description */}
+                <div className="text-sm text-gray-600 flex gap-2 mb-4 line-clamp-3">
+                  <FaAlignLeft className="text-gray-400 mt-1" />
+                  <p>{event.description}</p>
+                </div>
+              </div>
 
-        {/* Bottom Actions */}
-        <div className="flex items-center justify-between border-t pt-4 mt-auto">
-          <div className="text-sm font-semibold text-gray-700 flex items-center gap-2">
-            <FaUsers className="text-indigo-400" />
-            {event.attendeeCount || 0} Attending
-          </div>
+              {/* Bottom Actions */}
+              <div className="flex items-center justify-between border-t pt-4 mt-auto">
+                <div className="text-sm font-semibold text-gray-700 flex items-center gap-2">
+                  <FaUsers className="text-indigo-400" />
+                  {event.attendeeCount || 0} Attending
+                </div>
 
-          <button
-            onClick={() => handleJoin(event?._id)}
-            className="flex cursor-pointer items-center gap-2 text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-medium shadow-sm"
-          >
-            <FaPlusCircle />
-            Join
-          </button>
-        </div>
+                <button
+                  onClick={() => handleJoin(event?._id)}
+                  className="flex cursor-pointer items-center gap-2 text-sm bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition font-medium shadow-sm"
+                >
+                  <FaPlusCircle />
+                  Join
+                </button>
+              </div>
+            </div>
+          ))
+        )}
       </div>
-    ))
-  )}
-</div>
 
     </section>
   );
