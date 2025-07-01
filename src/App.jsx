@@ -8,12 +8,13 @@ import Profle from "./pages/user";
 import AddEvent from "./pages/event/AddEvent";
 import AllEvent from "./pages/event/AllEvent";
 import MyEvent from "./pages/event/MyEvent";
+import Loading from "./components/shared/loading";
 
 function App() {
   const authchek = useAuthCheck();
 
   return !authchek ? (
-    <span>Loading</span>
+    <Loading style={'h-screen'} />
   ) : (
     <>
       <Layout>
@@ -21,10 +22,10 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/profile" element={<Profle/>} />
-          <Route path="/events/add" element={<AddEvent/>}/>
-          <Route path="/events" element={<AllEvent/>}/>
-          <Route path="/events/mine" element={<MyEvent/>}/>
+          <Route path="/profile" element={<Profle />} />
+          <Route path="/events/add" element={<AddEvent />} />
+          <Route path="/events" element={<AllEvent />} />
+          <Route path="/events/mine" element={<MyEvent />} />
         </Routes>
       </Layout>
     </>

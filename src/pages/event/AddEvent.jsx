@@ -65,14 +65,14 @@ export default function AddEvent() {
 
 
   return (
-    <section className="min-h-screen font-sans bg-gray-100 flex items-center justify-center">
+    <section className=" font-sans bg-gray-100 flex items-center justify-center pt-10">
       <div className="relative w-full h-full">
         <div className="absolute inset-0">
           <div className="bg-gradient-to-br from-blue-600 to-purple-600 w-full h-full"></div>
         </div>
 
         <div className="relative flex justify-center items-center min-h-screen px-4">
-          <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full p-8 lg:p-12">
+          <div className="bg-white rounded-2xl shadow-lg max-w-lg w-full  p-8 lg:p-12">
             <div className="mb-8 text-center">
               <img
                 src="https://web.programming-hero.com/home/home2/icons/ph-logo.svg"

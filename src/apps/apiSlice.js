@@ -46,17 +46,6 @@ const baseQueryWithReauth = async (args, api, extraOptions) => {
 export const apiSlice = createApi({
   reducerPath: "poshApi",
   baseQuery: baseQueryWithReauth,
-  tagTypes: ['Event'],
-  endpoints: (builder) => ({
-    createEvent: builder.mutation({
-      query: (eventData) => ({
-        url: '/events',
-        method: 'POST',
-        body: eventData,
-      }),
-      invalidatesTags: ['Event'],
-    }),
-  }),
+  tagTypes: [],
+  endpoints: (builder) => ({}),
 });
-
-export const { useCreateEventMutation } = apiSlice;

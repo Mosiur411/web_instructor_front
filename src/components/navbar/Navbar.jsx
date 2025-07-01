@@ -27,7 +27,7 @@ const Navbar = ({ userInfo }) => {
 
   }
   return (
-    <div className="fixed w-full bg-white border-b border-slate-200 shadow-sm z-50">
+    <div className="fixed w-full bg-white border-b border-slate-200 shadow-sm !z-50">
       <div className="container mx-auto flex justify-between items-center px-4 py-3">
 
         <Link to="/" className="flex items-center">

@@ -8,7 +8,7 @@ import { userLoggedIn } from "../redux/auth/authSlice";
 export default function Register() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const [userregister] = useRegisterauthApiMutation()
+    const [userregister,{isLoading}] = useRegisterauthApiMutation()
     const [formData, setFormData] = useState({
         name: "",
         email: "",
@@ -94,9 +94,10 @@ export default function Register() {
 
                             <button
                                 type="submit"
+                                disabled={isLoading}
                                 className="w-full bg-blue-600 text-white py-3 rounded-full hover:bg-blue-700 transition"
                             >
-                                Register
+                              {isLoading?"Loading..":"Register"}  
                             </button>
                         </form>
 

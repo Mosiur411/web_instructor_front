@@ -20,6 +20,7 @@ import {
   parseEventDate,
 } from "../../utils/dateHelper";
 import Swal from "sweetalert2";
+import Loading from "../../components/shared/loading";
 
 export default function EventList() {
   const [filter, setFilter] = useState("all");
@@ -39,6 +40,10 @@ export default function EventList() {
     filterDate: specificDate,
     filterRange: dateRange,
   });
+
+
+
+
 
   const handleJoin = async (_id) => {
     try {
@@ -103,13 +108,6 @@ export default function EventList() {
     return events.filter((event) => {
       const eventDate = parseEventDate(event);
       if (!eventDate) return false;
-
-      //   // Search by event title filter
-      //   if (searchTitle && !event.eventTitle.toLowerCase().includes(searchTitle.toLowerCase())) {
-      //     return false;
-      //   }
-
-      // New search filter by property or employee (assuming event.property or event.employee fields)
       if (searchPropertyOrEmployee) {
         const prop = event.eventTitle?.toLowerCase() || "";
         const emp = event.location?.toLowerCase() || "";
@@ -183,16 +181,11 @@ export default function EventList() {
     });
   }, [events, filter, searchPropertyOrEmployee, specificDate, dateRange]);
 
-  if (isLoading) return <p className="text-center mt-10">Loading events...</p>;
-  if (isError)
-    return (
-      <p className="text-center mt-10 text-red-600">
-        Error: {error?.data?.message || error?.error}
-      </p>
-    );
+  if (isLoading) return <Loading style={"h-[80vh]"} />
+
 
   return (
-    <section className="min-h-screen font-sans bg-gray-100 flex flex-col items-center justify-start  px-4 pt-32">
+    <section className="min-h-screen font-sans bg-gray-100 flex flex-col items-center justify-start pt-32 px-4 ">
       <h1 className="text-4xl font-extrabold mb-8 text-gray-900">
         Upcoming Events
       </h1>

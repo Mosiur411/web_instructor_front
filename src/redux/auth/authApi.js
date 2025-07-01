@@ -1,6 +1,6 @@
 import { apiSlice } from "../../apps/apiSlice";
 
-export const authApi = apiSlice.enhanceEndpoints({ addTagTypes: ['auth'] }).injectEndpoints({
+export const authApi = apiSlice.enhanceEndpoints({ addTagTypes: ['profile auth'] }).injectEndpoints({
     endpoints: (builder) => ({
 
         loginauthApi: builder.mutation({
@@ -9,6 +9,7 @@ export const authApi = apiSlice.enhanceEndpoints({ addTagTypes: ['auth'] }).inje
                 method: "POST",
                 body: data,
             }),
+            providesTags:["profile auth"]
         }),
         logoutauthApi: builder.mutation({
             query: (data) => ({

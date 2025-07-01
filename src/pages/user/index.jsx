@@ -1,15 +1,32 @@
-import { useProfileuserApiQuery } from "../../redux/user/userApi";
+import React, { useState, useEffect } from "react";
+import { useProfileuserApiQuery, useUpdateuserApiMutation } from "../../redux/user/userApi";
 
+export default function Profile() {
+    const { data } = useProfileuserApiQuery();
+    const [profileUpdate, { isLoading }] = useUpdateuserApiMutation()
 
-export default function Profle() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [photoURL, setPhotoURL] = useState("");
 
-    const { data } = useProfileuserApiQuery()
-    console.log("profile", data)
+    useEffect(() => {
+        if (data?.user) {
+            setName(data.user.name || "");
+            setEmail(data.user.email || "");
+            setPhotoURL(data.user.photoURL || "");
+        }
+    }, [data]);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const updatedProfile = { name, email, photoURL };
+        await profileUpdate(updatedProfile)
+
+    };
 
     return (
         <>
-
             <section className="min-h-screen font-sans bg-gray-100 flex items-center justify-center">
                 <div className="relative w-full h-full">
                     <div className="absolute inset-0">
@@ -27,43 +44,45 @@ export default function Profle() {
                             </div>
 
                             <div className="mb-8 text-center">
-                                <h1 className="text-3xl font-bold text-gray-900">Create Account</h1>
-                                <p className="text-gray-500 mt-2">Sign up to get started</p>
+                                <h1 className="text-3xl font-bold text-gray-900">Update Profile</h1>
                             </div>
 
-                            <form className="space-y-6" >
+                            <form className="space-y-6" onSubmit={handleSubmit}>
                                 <input
                                     type="text"
                                     name="name"
                                     placeholder="Name"
-                                    value={data?.user?.name}
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
                                     className="w-full p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
                                 <input
                                     type="email"
                                     name="email"
                                     placeholder="Email"
-                                     value={data?.user?.name}
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
                                     className="w-full p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
-                               
+
                                 <input
                                     type="text"
                                     name="photoURL"
                                     placeholder="Photo URL"
-                                     value={data?.user?.name}
+                                    value={photoURL}
+                                    onChange={(e) => setPhotoURL(e.target.value)}
                                     className="w-full p-4 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
                                 />
 
                                 <button
                                     type="submit"
+                                    disabled={isLoading}
                                     className="w-full bg-blue-600 text-white py-3 rounded-full hover:bg-blue-700 transition"
                                 >
-                                    Update
+
+                                    {isLoading ? "Loading.." : "Update"}
                                 </button>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
